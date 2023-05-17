@@ -1,6 +1,7 @@
 package com.android.lemonade
 
 import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -16,14 +17,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
 fun Lemonade(
-	text: String,
+	@StringRes textId: Int,
 	@DrawableRes imageRes: Int,
-	contentDescription: String,
+	@StringRes contentDescriptionId: Int,
 	modifier: Modifier = Modifier,
 	onClickImage: () -> Unit
 ) {
@@ -32,11 +34,11 @@ fun Lemonade(
 		verticalArrangement = Arrangement.Center,
 		horizontalAlignment = Alignment.CenterHorizontally
 	) {
-		Text(text = text, fontSize = 18.sp)
+		Text(text = stringResource(id = textId), fontSize = 18.sp)
 		Spacer(modifier = modifier.padding(vertical = 16.dp))
 		Image(
 			painter = painterResource(id = imageRes),
-			contentDescription = contentDescription,
+			contentDescription = stringResource(id = contentDescriptionId),
 			modifier = Modifier
 				.border(
 					width = 2.dp,

@@ -1,18 +1,14 @@
 <resources>
 	<string name="app_name">Lemonade</string>
 	
-	<string-array name="descriptions_clicks">
-		<item>Tap the lemon tree to select a lemon</item>
-		<item>Keep tapping the lemon to squeeze it</item>
-		<item>Tap the lemonade to drink it</item>
-		<item>Tap the empty glass to start again</item>
-	</string-array>
+	<string name="lemon_tree">Tap the lemon tree to select a lemon</string>
+	<string name="lemon">Keep tapping the lemon to squeeze it</string>
+	<string name="lemonade">Tap the lemonade to drink it</string>
+	<string name="glass">Tap the empty glass to start again</string>
 	
-	<string-array name="content_description_images">
-		<item>Lemon tree</item>
-		<item>Lemon</item>
-		<item>Glass of lemonade</item>
-		<item>Empty glass</item>
-	</string-array>
+	<string name="lemon_tree_description">Lemon tree</string>
+	<string name="lemon_description">Lemon</string>
+	<string name="lemonade_description">Glass of lemonade</string>
+	<string name="glass_description">Empty glass</string>
 	
 </resources>

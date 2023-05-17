@@ -12,7 +12,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.android.lemonade.data.CurrentImage
 import com.android.lemonade.ui.theme.LemonadeTheme
@@ -30,20 +29,17 @@ class MainActivity : ComponentActivity() {
 					var current: CurrentImage by remember {
 						mutableStateOf(CurrentImage.LemonTree)
 					}
-					val arrayText = stringArrayResource(id = R.array.descriptions_clicks)
-					val arrayDescription =
-						stringArrayResource(id = R.array.content_description_images)
 					Lemonade(
-						arrayText[current.index],
+						current.stringResourceId,
 						current.imageRes,
-						arrayDescription[current.index]
+						current.contentDescriptionImage
 					) {
 						current = when (current) {
 							CurrentImage.LemonTree -> CurrentImage.Lemon
 							CurrentImage.Lemon -> {
 								with(current as CurrentImage.Lemon) {
 									if (++taps < random)
-										current
+										this
 									else {
 										random = (2..4).random()
 										taps = 0
@@ -51,7 +47,6 @@ class MainActivity : ComponentActivity() {
 									}
 								}
 							}
-
 							CurrentImage.Lemonade -> CurrentImage.Glass
 							CurrentImage.Glass -> CurrentImage.LemonTree
 						}
@@ -68,9 +63,9 @@ class MainActivity : ComponentActivity() {
 fun GreetingPreview() {
 	LemonadeTheme {
 		Lemonade(
-			stringArrayResource(id = R.array.descriptions_clicks)[0],
+			R.string.lemon_tree,
 			R.drawable.lemon_tree,
-			stringArrayResource(id = R.array.content_description_images)[0]
+			R.string.lemon_tree_description
 		) {}
 	}
 }

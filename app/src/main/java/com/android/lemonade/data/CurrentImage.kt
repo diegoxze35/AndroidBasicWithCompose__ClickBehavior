@@ -1,41 +1,54 @@
 package com.android.lemonade.data
 
 import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import com.android.lemonade.R
 
 sealed interface CurrentImage {
 
-	val index: Int
+	@get: StringRes
+	val stringResourceId: Int
+
+	@get: StringRes
+	val contentDescriptionImage: Int
 
 	@get:DrawableRes
 	val imageRes: Int
 
-	object LemonTree : CurrentImage {
-		override val index: Int
-			get() = 0
+	data object LemonTree : CurrentImage {
+		override val stringResourceId: Int
+			get() = R.string.lemon_tree
+		override val contentDescriptionImage: Int
+			get() = R.string.lemon_tree_description
 		override val imageRes: Int
 			get() = R.drawable.lemon_tree
 	}
 
-	object Lemon : CurrentImage {
+	data object Lemon : CurrentImage {
+		override val stringResourceId: Int
+			get() = R.string.lemon
+		override val contentDescriptionImage: Int
+			get() = R.string.lemon_description
 		override val imageRes: Int
 			get() = R.drawable.lemon_squeeze
-		override val index: Int
-			get() = 1
 		var taps: Int = 0
 		var random = (2..4).random()
 	}
 
-	object Lemonade : CurrentImage {
-		override val index: Int
-			get() = 2
+	data object Lemonade : CurrentImage {
+		override val stringResourceId: Int
+			get() = R.string.lemonade
+		override val contentDescriptionImage: Int
+			get() = R.string.lemonade_description
 		override val imageRes: Int
 			get() = R.drawable.lemon_drink
 	}
 
-	object Glass : CurrentImage {
-		override val index: Int
-			get() = 3
+	data object Glass : CurrentImage {
+		override val stringResourceId: Int
+			get() = R.string.glass
+		override val contentDescriptionImage: Int
+			get() = R.string.glass_description
 		override val imageRes: Int
 			get() = R.drawable.lemon_restart
 	}
